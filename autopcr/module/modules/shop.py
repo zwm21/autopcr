@@ -153,7 +153,7 @@ class limit_shop(shop_buyer):
 @singlechoice('underground_shop_buy_coin_limit', "货币阈值", 10000, [0, 10000, 50000, 100000, 200000])
 @singlechoice("underground_shop_buy_equip_consider_unit_rank", "角色起始品级", "所有", ["所有", "最高", "次高", "次次高"])
 @booltype("underground_shop_buy_equip_consider_unit_fav", "收藏角色", False) 
-@inttype('underground_shop_reset_count', "重置次数(<=200)", 0, [i for i in range(201)])
+@inttype('underground_shop_reset_count', "重置次数(解除<=200限制，现在<=1000)", 0, [i for i in range(1001)])
 @multichoice("underground_shop_buy_kind", "购买种类", ['记忆碎片', '装备'], ['记忆碎片', '装备'])
 @name('地下城商店购买')
 @description('根据需求购买装备和记忆碎片，可设置需求角色的品级和收藏角色')
