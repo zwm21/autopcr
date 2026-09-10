@@ -78,7 +78,7 @@ class datamgr(BaseModel, Component[apiclient]):
     async def try_update_database(ver: int):
         async with _data_lck:
             if not assetmgr.ver or assetmgr.ver < ver:
-                await assetmgr.init(ver)
+                assetmgr.set_version(ver)
             if not dbmgr.ver or dbmgr.ver < assetmgr.ver: 
                 await dbmgr.update_db(assetmgr)
                 db.update(dbmgr)
@@ -134,8 +134,7 @@ class datamgr(BaseModel, Component[apiclient]):
         if not times:
             return 0
         times = max(times)
-        # return int(times)
-        return int(times) // 2 # TODO delete // 2 when stop speed up
+        return int(times)
 
     def get_heart_piece_campaign_times(self) -> int:
         return self.get_campaign_times(db.is_heart_piece_campaign) // 1000
